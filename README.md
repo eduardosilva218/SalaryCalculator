@@ -1,6 +1,6 @@
 # Salary calculator
 
-My first project in Flutter, this is a program to calculate the salary of an hourly employee. Enter hours worked, amount of hours worked and discounts.
+My first project on Flutter. It consists of a program to calculate a bet per hour. Enter hours worked, amount of hours worked and discounts.
 
 ## Getting Started
 
