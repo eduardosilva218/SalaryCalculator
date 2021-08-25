@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'HomePage.dart';
+import 'package:salary_calculator/app/views/home_page/home_page.dart';
 
 class SalaryCalculatorApp extends StatelessWidget {
   @override
@@ -20,7 +19,7 @@ class SalaryCalculatorApp extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   onPrimary: Colors.white, primary: Colors.deepPurple))),
       themeMode: ThemeMode.dark,
-      home: HomePage(title: 'Salary calculator'),
+      home: HomePage(title: 'Salary Calculator'),
     );
   }
 }

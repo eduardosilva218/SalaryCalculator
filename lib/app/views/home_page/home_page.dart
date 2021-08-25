@@ -12,11 +12,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double _salary = 0;
+  var _textEditingControllerWorkedHours = new TextEditingController();
+  var _textEditingControllerHourlyValue = new TextEditingController();
 
-  void _calculateSalary() {
+  void _calculateSalary(double workedHours, double hourlyValue) {
     setState(() {
-      _salary = 1367.00;
+      var salary = workedHours * hourlyValue;
+      final snackBarResult = SnackBar(
+          backgroundColor: Colors.deepPurple,
+          content: new Text("\$ " + salary.toStringAsFixed(2),
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white
+              )
+          ),
+          action: SnackBarAction(
+              textColor: Colors.white,
+              label: 'CLOSE',
+              onPressed: () { }
+            )
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBarResult);
     });
   }
 
@@ -28,11 +44,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(30),
               child: new TextField(
+                controller: _textEditingControllerWorkedHours,
                 decoration: new InputDecoration(labelText: "Worked hours"),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(
@@ -44,6 +61,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(30),
               child: new TextField(
+                controller: _textEditingControllerHourlyValue,
                 decoration: new InputDecoration(
                     labelText: "Hourly value", prefixText: "\$ "),
                 inputFormatters: [
@@ -57,9 +75,12 @@ class _HomePageState extends State<HomePage> {
               width: 350.0,
               child: ElevatedButton(
                 onPressed: () {
-                  _calculateSalary();
+                  _calculateSalary(
+                      double.parse(_textEditingControllerWorkedHours.text),
+                      double.parse(_textEditingControllerHourlyValue.text)
+                  );
                 },
-                child: const Text('Calculate', style: TextStyle(fontSize: 16)),
+                child: const Text('Calculate', style: TextStyle(fontSize: 18)),
               ),
             ),
           ],
