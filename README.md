@@ -4,6 +4,8 @@
 
 Program to calculate a bet per hour. Enter hours worked, amount of hours worked and discounts.
 
+![Program gif working](salary_calculator.gif)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
